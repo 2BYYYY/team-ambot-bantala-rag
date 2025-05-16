@@ -25,7 +25,7 @@ If relevant context is found, it's passed along with the query to Gemini, which 
 
 The chatbot receives the response as a JSON object and displays it to the user.
 
-![image](https://github.com/user-attachments/assets/b7e019a2-f415-46ff-b6c8-f313fcaa1bea)
+![Frame 48](https://github.com/user-attachments/assets/e8c789e5-baf8-4e1e-94c2-ee076edd2cee)
 
 🚀 Purpose:
 
