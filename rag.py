@@ -1,9 +1,7 @@
 import os
 # For asynchronous operations
 import asyncio
-
 from typing import Any
-
 # For GenerativeAI
 from google import genai
 from google.genai import types
@@ -15,31 +13,27 @@ from google.genai.types import (
 )
 import numpy as np
 import pandas as pd
-
 # For similarity score
 from sklearn.metrics.pairwise import cosine_similarity
-
 # For retry mechanism
 from tenacity import retry, stop_after_attempt, wait_random_exponential
-
 from google.cloud import bigquery
 
+# --- Configuration ---
 PROJECT_ID = "PROJECT_ID"  # Replace with your project ID
 LOCATION = "LOCATION"  # Replace with your location
+MODEL_ID = "MODEL_ID" # Replace with your model of choice
+MODEL = (
+    f"projects/{PROJECT_ID}/locations/{LOCATION}/publishers/google/models/{MODEL_ID}"
+)
+TEXT_EMBEDDING_MODEL = "text-embedding-005"
 
-# Vertex AI
+# --- Google Client ---
 client = genai.Client(
     vertexai=True,
     project=PROJECT_ID,
     location=LOCATION,
 )
-
-MODEL_ID = "MODEL_ID" # Replace with your model of choice
-MODEL = (
-    f"projects/{PROJECT_ID}/locations/{LOCATION}/publishers/google/models/{MODEL_ID}"
-)
-
-TEXT_EMBEDDING_MODEL = "text-embedding-005"
 
 async def generate_content(query: str) -> str:
     """Function to generate text content using Gemini live API.
